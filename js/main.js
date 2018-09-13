@@ -7,7 +7,8 @@
     storageBucket: "reservation-site-vc2.appspot.com",
     messagingSenderId: "186888821947"
   };
-  firebase.initializeApp(config);
+firebase.initializeApp(config);
+
 
 var database = firebase.database();
 
