@@ -1,3 +1,5 @@
+var reservationData = {};
+
 // Initialize Firebase
   var config = {
     apiKey: "AIzaSyCJD9zikAyGskhoBatCTxhD2sYtIbxoCc8",
@@ -9,62 +11,45 @@
   };
 firebase.initializeApp(config);
 
-
+//Connect to Database
 var database = firebase.database();
 
-var reservationData = {};
 
+//sets day when option is clicked
 $('.reservation-day li').on('click', function() {
   reservationData.day = $(this).text();
 });
 
+//when clicked all data sent to database
 $('.reservation-form').on('submit', function(event) {
 event.preventDefault();
 
+  //gets the name from input field
   reservationData.name = $('.reservation-name').val();
   
-  //creates a section for reservations data in my db
+  //pushed data object to my db
 var reservationsReference = database.ref('reservations');
 
-reservationsReference.push(reservationData);
+database.ref('reservations').push(reservationData);
 
 });
 
-//visual confirmation
-function getReservations() {
 
-  // use reference to database to listen for changes in reservations data
-  database.ref('reservations').on('value', function(results) {
-
-    // Get all reservations stored in the results we received back from Firebase
-    var allReservations = results.val();
-
-    // remove all list reservations from DOM before appending list reservations
-    $('.reservations').empty();
-
-    // iterate (loop) through all reservations coming from database call
-    for (var reservation in allReservations) {
-    // Create an object literal with the data we'll pass to Handlebars
-      var context = {
-        name: allReservations[reservation].name,
-        day: allReservations[reservation].day,
-        reservationId: reservation
-      };
-
-  var source = $("#reservation-template").html();
-
+// on initial load and addition of each reservation update the view
+database.ref('reservations').on('child_added', function(snapshot) {
+  // grab element to hook to
+  var reservationList = $('.reservation-list');
+  // get data from database
+  var reservations = snapshot.val();
+  // get your template from your script tag
+  var source   = $("#reservation-template").html();
+  // compile template
   var template = Handlebars.compile(source);
-
-  var reservationListItem = template(context);
-
-  $('.reservations').append(reservationListItem);
-
-    }
-
-  });
-
-}
+  // pass data to template to be evaluated within handlebars
+  // as the template is created
+  var reservationTemplate = template(reservations);
+  // append created templated
+  reservationList.append(reservationTemplate);
+});
 
 
-// When page loads, get reservations
-getReservations();

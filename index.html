@@ -11,6 +11,13 @@
     	<link rel="icon" href="images/logo_new.jpg">
 	</head>
 	<body data-spy="scroll" data-target=".navbar" data-offset="50">
+		<script id="reservation-template" type="text/x-handlebars-template">
+		<tr>
+			<td>{{name}}</td>
+			<td>{{day}}</td>
+		</tr>
+		</script>
+
 	  	<div id="Welcome">
 	  		<!---Start navigation Bar -->
 	    	<nav class="navbar navbar-expand-lg navbar fixed-top  navbar-light bg-light">
@@ -34,7 +41,9 @@
 					    <li class="nav-item">
 					    	<a class="nav-link" href="#Reviews">Reviews</a>
 					    </li>
-
+					    <li class="nav-item">
+					    	<a class="nav-link" href="#OurLocation">Our Location</a>
+					    </li>
 				    </ul>
 				</div>
 			</nav>
@@ -73,53 +82,45 @@
 <!--- End of Carousel -->
 
 <!--- Start of Reservation-->
-
-			<div class="row" id="Reservation">
-				<div class="col navMenu">
-	     		 	<h2 class="text-center">Make a Reservation</h2>
-				</div>
+<div class="reservation col" id="Reservation">
+		<div class="col navMenu">
+	     	<h2 class="text-center">Make a Reservation</h2>
+		</div>
+			<div class="offset-sm-2 col-sm-4 offset-md-4 col-md-4 reservation-form">
+				<form class="form-column reservations">
+				  <div class="form-group">
+				    <input type="text" class="form-control reservation-name" placeholder="Jane Doe">
+				  </div>
+				  <div class="form-group">
+						<div class="dropdown">
+						  <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+						    Select A Day
+						    <span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu reservation-day">
+						    <li><a>Today</a></li>
+						    <li><a>Tomorrow</a></li>
+						    <li><a>The day after next</a></li>
+						  </ul>
+						</div>
+				  </div>
+				  <button class="btn btn-primary reservation-button">Set Reservation</button>
+				</form>
 			</div>
-			<br>
-			<div class="row bg-light pt30">
-				<div class="col offset-sm-2 col-sm-4 offset-md-3 col-md-6">
-					<form class="reservation-form">
-						<div class="form-column">
-						  	<div class="form-group">
-						  		<h3>Reservation Details</h3>
-						  		<input type="text" class="form-control reservation-name" placeholder="Name">
-							</div>
 
-							<div class="form-group">
-								<div class="dropdown">
-									<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">Select A Day
-									<span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu reservation-day">
-										<li><a>Today</a></li>
-										<li><a>Tomorrow</a></li>
-										<li><a>The day after next</a></li>
-									</ul>
-								</div>
-							</div>
-
-					 	</div>
-					 </form>
-					 <button class="btn btn-primary reservation-button" type="submit">Set Reservation</button>
-					 <ul class="reservations"></ul>
-<!--table-->
-
-		<table class="table table-dark">
+		<!-- reservations -->
+		<div class="offset-sm-2 col-sm-4 offset-md-4 col-md-4">
+		<table class="table table-striped">
+			<h4 class="pt30">Reservations</h4>
 			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Day</th>
-				</tr>
+				<th>Name</th>
+				<th>Day</th>
 			</thead>
-			<tbody></tbody>
+			<tbody class="reservation-list"></tbody>
 		</table>
-
+		</div>
 	</div>
-</div>
+
 <!--- End of Reserve -->
 
 <!--- Come Dine With Us-->
@@ -138,18 +139,8 @@
   					<img class="img-fluid" src="images/tomsrestaurant_slide3.jpg">
   				</div>
   			</div>
-  			<!--map-->
-  			<div class="row mb100">
-				<div id="map" class="col-md-9 map"></div>
-				<div class="col-md-3">
-					<h3>Address:</h3>
-					<p>2880 Broadway, New York, NY, 10025 </p>
-					<h3>Email:</h3>
-					<p>hello@monkscafe.com</p>
-				</div>
-			</div>
 
-  			<!--- End of Dine With Us -->
+  			<!--- End of Restaurant -->
 
     <!--Customer Review Section-->
     <div class="column row" id="Reviews">
@@ -185,7 +176,31 @@
         
     </div>
 
-   
+			<!--- Start of Our Location -->
+			<div class="row" id="OurLocation">
+				<div class="col navMenu">
+					<h2 class="text-center mb50">Our Location</h2>
+				</div>
+			</div>
+			<div class="row mb100">
+				<div id="map" class="col-md-9 map"></div>
+				<div class="col-md-3">
+					<h3>Address:</h3>
+					<p>2880 Broadway, New York, NY, 10025 </p>
+					<h3>Email:</h3>
+					<p>hello@monkscafe.com</p>
+				</div>
+			</div>
+			<!--- End of Our Location -->
+
+			<!--Hours-->
+			<div class="row mb100">
+				<div>
+					<h2 class="text-center mb50">Hours</h2>
+					<p style="text-align: center;">asdfasfa</p>
+				</div>
+
+			</div>    
 			<!--Footer-->
 			<div class="row footer bg-light top-padding">
 				<div class="col">
@@ -200,23 +215,32 @@
 			</div>
 		</div>
 <!--Scripts-->
-<script id="reservation-template" type="text/x-handlebars-template">
-	<li data-id="{{reservationId}}">
-		<p>Hi, {{name}}! Your reservation is all set for {{day}}.</p>
-	</li>
-</script>
+
 
 <!--firebase-->
 <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
-		<script src="js/jquery-3.3.1.min.js"></script>
-		<script type="text/javascript" src="js/main.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-		<script type="text/javascript" src="js/map.js"></script>
-		<script type="text/javascript" src="js/smooth-scroll.js"></script>
-		<script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
-		<script type="text/javascript" src="js/image-effect.js"></script>
-		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFZjOV0KA68G2YAh-rn7I3qKqCQEh_Ja0&callback=myMap"></script>
+
+<!--jquery-->
+<script src="js/jquery-3.3.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+<script type="text/javascript" src="js/map.js"></script>
+
+<script type="text/javascript" src="js/smooth-scroll.js"></script>
+
+<script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+
+<script type="text/javascript" src="js/image-effect.js"></script>
+<!-- handlebars -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+<!--custom js-->
+<script src="js/main.js"></script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFZjOV0KA68G2YAh-rn7I3qKqCQEh_Ja0&callback=myMap"></script>
 </body>
 </html>
