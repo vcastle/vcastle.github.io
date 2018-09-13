@@ -11,6 +11,7 @@
     	<link rel="icon" href="images/logo_new.jpg">
 	</head>
 	<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
 		<script id="reservation-template" type="text/x-handlebars-template">
 		<tr>
 			<td>{{name}}</td>
@@ -86,12 +87,14 @@
 		<div class="col navMenu">
 	     	<h2 class="text-center">Make a Reservation</h2>
 		</div>
-			<div class="offset-sm-2 col-sm-4 offset-md-4 col-md-4 reservation-form">
-				<form class="form-column reservations">
-				  <div class="form-group">
-				    <input type="text" class="form-control reservation-name" placeholder="Jane Doe">
+			<div class="col-sm-12 offset-md-2 col-md-8 reservation-form">
+				<form class="reservations">
+					<div class="form-row">
+				  <div class=" col form-group">
+				    <input type="text" class="form-control reservation-name" placeholder="Name">
 				  </div>
-				  <div class="form-group">
+				  <div class="row form-group" style="margin-right: 5px;">
+
 						<div class="dropdown">
 						  <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
 						    Select A Day
@@ -104,12 +107,16 @@
 						  </ul>
 						</div>
 				  </div>
-				  <button class="btn btn-primary reservation-button">Set Reservation</button>
+
+
+				  	<div class="col-md-4">
+				  		<button class="btn btn-primary reservation-button">Set Reservation</button>
+					</div>
 				</form>
 			</div>
 
 		<!-- reservations -->
-		<div class="offset-sm-2 col-sm-4 offset-md-4 col-md-4">
+		<div class="col-sm-12 offset-md-2 col-md-8 col-lg-8">
 		<table class="table table-striped">
 			<h4 class="pt30">Reservations</h4>
 			<thead>
@@ -132,8 +139,11 @@
   			</div>
   			<div class="row bg-light mb100">
   				<div class="col-md-6">
-  					<h5>A Unique Experience</h5>
+  					<br>
+  					<h3>A Unique Experience</h3>
   					<p>Thanks for stopping by. Monk's Cafe has been a staple in Morningside Heights New York for over 70 years. It's an authentic New York diner!</p>
+  					<br>
+  					<p>FRESH tasty food made from scratch, made with care, with portions and price that keep both your stomach and your wallet full. All brought to your table with a big smile; "May we get you anything else?" Here to serve you in today's often busy and fast paced world, with the care and attention you can only get from Monk's Cafe!</p>
   				</div>
   				<div class="col-md-6" data-aos="fade-up">
   					<img class="img-fluid" src="images/tomsrestaurant_slide3.jpg">
@@ -145,10 +155,10 @@
     <!--Customer Review Section-->
     <div class="column row" id="Reviews">
             <div class="tabs-panel is-active navMenu" id="panel1">
-                <h4>Reviews</h4>
+                <h3>Reviews</h3>
                 <div class="media-object stack-for-small">
                     <div class="media-object-section"><img class="thumbnail"
-                    src="images/jerry.jpg" width="320px"></div>
+                    src="images/jerry.jpg" width="220px"></div>
                     <div class="media-object-section">
                         <h5>Jerry Seinfeld</h5>
                         <p>"Big lettuce, big carrots, tomatoes like volleyballs."</p>
@@ -156,7 +166,7 @@
                 </div>
                 <div class="media-object stack-for-small">
                     <div class="media-object-section"><img class="thumbnail"
-                    src="images/soup-nazi.jpg" width="320px"></div>
+                    src="images/soup-nazi.jpg" width="220px"></div>
                     <div class="media-object-section">
                         <h5>Soup Nazi</h5>
                         <p>"NO SOUP FOR YOU!"</p>
@@ -164,13 +174,14 @@
                 </div>
                 <div class="media-object stack-for-small">
                     <div class="media-object-section"><img class="thumbnail"
-                    src="images/costanza.jpg" width="320px"></div>
+                    src="images/costanza.jpg" width="220px"></div>
                     <div class="media-object-section">
                         <h5>George Costanza</h5>
                         <p>"It has practically the same menu as Reggie's"</p>
                     </div>
-                </div><label>My Review 
-                <textarea placeholder="None"></textarea></label>
+                </div>
+                <label><strong>My Review 
+                <textarea placeholder="None"></textarea></strong></label>
                 <button class="button alert">Submit Review</button>
             </div>
         
@@ -182,9 +193,10 @@
 					<h2 class="text-center mb50">Our Location</h2>
 				</div>
 			</div>
-			<div class="row mb100">
+			<div class="row">
 				<div id="map" class="col-md-9 map"></div>
 				<div class="col-md-3">
+					<br>
 					<h3>Address:</h3>
 					<p>2880 Broadway, New York, NY, 10025 </p>
 					<h3>Email:</h3>
@@ -194,17 +206,23 @@
 			<!--- End of Our Location -->
 
 			<!--Hours-->
-			<div class="row mb100">
-				<div>
-					<h2 class="text-center mb50">Hours</h2>
-					<p style="text-align: center;">asdfasfa</p>
+			<div class="row" id="Hours">
+				<div class="col navMenu">
+					<h2 class="text-center">Hours</h2>
 				</div>
-
-			</div>    
+			</div>
+			<div class="text-center">
+				<h4>Monday</h4>
+				<p>Open 24 Hours</p>
+				<h4>Tuesday - Thursday</h4>
+				<p>7AM - 1AM</p>
+				<h4>Friday - Sunday</h4>
+				<p>Open 24 Hours</p>
+			</div>  
 			<!--Footer-->
 			<div class="row footer bg-light top-padding">
 				<div class="col">
-					<p class="text-center">Follow us: <a class="social-icon" href="https://www.instagram.com/vcastle_ui/"><i class="fab fa-instagram"></i></a></p>
+					<p class="text-center">Follow us: <a class="social-icon" href="https://www.facebook.com/TomsDiner.original/"><i class="fab fa-facebook"></i></a></p>
 				</div>
 				<div class="col">
 					<p class="text-center">Copyright &copy; 2018</p>

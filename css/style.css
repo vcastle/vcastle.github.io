@@ -10,6 +10,7 @@ a {
 	color: #ec5840;
 }
 
+/*custom*/
 .tp-mt-padding {
 	padding-top: 10px;
 	margin-top: 25px;
@@ -27,15 +28,21 @@ a {
 	padding-top: 30px;
 }
 
+.mr25 {
+	margin-right: 25px;
+}
+
+/*dropdown menu*/
+.dropdown-menu > li:hover {
+    background-color: lightgrey;
+    background-image: none;
+}
+
 .nav-item{
 	padding-right: 12px;
 	padding-left: 12px;
 }
-.flag{
-	max-height: 20px;
-	max-width: 20px;
-	margin-top: 10px;
-}
+
 .nav-link.active{
 	background-color: lightgrey !important;
 }

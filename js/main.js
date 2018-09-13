@@ -52,4 +52,3 @@ database.ref('reservations').on('child_added', function(snapshot) {
   reservationList.append(reservationTemplate);
 });
 
-
